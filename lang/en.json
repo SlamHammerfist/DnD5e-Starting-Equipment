@@ -1,0 +1,48 @@
+{
+  "STARTEQUIP": {
+    "Title": "Starting Equipment: {name}",
+    "ChooseOne": "Choose one",
+    "ChooseFrom": "Choose from {category}",
+    "Any": {
+      "weapon": "Any weapon",
+      "armor": "Any armor",
+      "tool": "Any tool",
+      "focus": "Any spellcasting focus"
+    },
+    "ProficientOnly": "proficient only",
+    "TakeEquipment": "Take starting equipment",
+    "TakeGold": "Take starting gold instead",
+    "Roll": "Roll starting gold",
+    "Apply": "Add to Character",
+    "Skip": "Skip",
+    "NoEquipment": "This item defines no starting equipment.",
+    "Missing": "Could not find item ({key})",
+    "AlreadyGranted": "already granted once",
+    "Granted": "Added {items} item(s) to {name}{coins}.",
+    "GoldFlavor": "Starting gold ({source})",
+    "NothingToOffer": "{name} has no class or background with starting equipment or wealth.",
+    "ContextMenu": "Starting Equipment…",
+    "Settings": {
+      "AutoPrompt": {
+        "Name": "Offer starting equipment automatically",
+        "Hint": "When you add a class or background to a level 1 character, open the starting equipment dialog."
+      },
+      "PostGoldRoll": {
+        "Name": "Post starting-gold rolls to chat",
+        "Hint": "Show starting-gold rolls in the chat log."
+      },
+      "RemoveOnDelete": {
+        "Name": "Remove granted equipment with its class",
+        "Hint": "When a class or background is deleted from a character, delete the items and starting gold it granted. Only coins the character still has are taken back.",
+        "Ask": "Ask first",
+        "Always": "Always",
+        "Never": "Never"
+      }
+    },
+    "Remove": {
+      "Title": "Remove starting equipment: {source}",
+      "Prompt": "{source} was removed. Also remove what its starting equipment granted?",
+      "Done": "Removed {count} item(s){coins} granted by {source}."
+    }
+  }
+}

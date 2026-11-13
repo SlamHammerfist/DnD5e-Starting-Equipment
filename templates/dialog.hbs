@@ -1,0 +1,48 @@
+<div class="se-wrapper">
+  <div class="se-body">
+    {{#each sources}}
+    <section class="se-source" data-source="{{id}}">
+      <header class="se-header">
+        <img src="{{img}}" alt="">
+        <div>
+          <h3>{{name}}</h3>
+          <span class="se-type">{{typeLabel}}{{#if alreadyGranted}} · <em>{{localize "STARTEQUIP.AlreadyGranted"}}</em>{{/if}}</span>
+        </div>
+      </header>
+
+      {{#if hasWealth}}
+      <div class="se-mode">
+        <label>
+          <input type="radio" name="mode-{{id}}" value="equipment" data-mode="{{id}}" {{#if root}}checked{{/if}} {{#unless root}}disabled{{/unless}}>
+          {{localize "STARTEQUIP.TakeEquipment"}}
+        </label>
+        <label>
+          <input type="radio" name="mode-{{id}}" value="gold" data-mode="{{id}}" {{#unless root}}checked{{/unless}}>
+          {{localize "STARTEQUIP.TakeGold"}} <code>{{wealth}}</code>
+        </label>
+        <div class="se-gold-row">
+          <input type="number" class="se-gold" name="gold-{{id}}" min="0" step="1" value="" placeholder="—">
+          <span>gp</span>
+          <button type="button" data-action="rollGold" data-source="{{id}}" data-tooltip="STARTEQUIP.Roll">
+            <i class="fas fa-dice-d20"></i>
+          </button>
+        </div>
+      </div>
+      {{/if}}
+
+      {{#if root}}
+      <div class="se-equipment" data-source="{{id}}">
+        {{> "modules/dnd5e-starting-equipment/templates/entry.hbs" root}}
+      </div>
+      {{else}}
+      {{#unless hasWealth}}<p class="hint">{{localize "STARTEQUIP.NoEquipment"}}</p>{{/unless}}
+      {{/if}}
+    </section>
+    {{/each}}
+  </div>
+
+  <footer class="form-footer se-footer">
+    <button type="button" data-action="skip"><i class="fas fa-times"></i> {{localize "STARTEQUIP.Skip"}}</button>
+    <button type="submit"><i class="fas fa-check"></i> {{localize "STARTEQUIP.Apply"}}</button>
+  </footer>
+</div>

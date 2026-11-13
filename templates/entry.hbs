@@ -1,0 +1,41 @@
+{{#if isAnd}}
+<ul class="se-and">
+  {{#each children}}
+  <li>{{> "modules/dnd5e-starting-equipment/templates/entry.hbs"}}</li>
+  {{/each}}
+</ul>
+{{else if isOr}}
+<div class="se-or">
+  <span class="se-or-label">{{localize "STARTEQUIP.ChooseOne"}}</span>
+  {{#each children}}
+  <div class="se-choice{{#unless checked}} inactive{{/unless}}">
+    <label class="se-choice-head">
+      <input type="radio" name="{{../name}}" value="{{id}}" {{#if checked}}checked{{/if}}>
+      <span class="se-letter">({{letter}})</span>
+    </label>
+    <div class="se-choice-body">
+      {{> "modules/dnd5e-starting-equipment/templates/entry.hbs" view}}
+    </div>
+  </div>
+  {{/each}}
+</div>
+{{else if isSelect}}
+<div class="se-select">
+  {{#if multi}}<span class="se-count">{{count}}×</span>{{/if}}
+  <select name="{{name}}">
+    {{#each choices}}
+    <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+    {{/each}}
+  </select>
+  <span class="se-hint">{{label}}{{#if proficientOnly}} · {{localize "STARTEQUIP.ProficientOnly"}}{{/if}}</span>
+</div>
+{{else if isItem}}
+<span class="se-item">
+  {{#if multi}}<span class="se-count">{{count}}×</span>{{/if}}
+  <a class="content-link" data-link data-uuid="{{uuid}}" draggable="false"><i class="fas fa-suitcase"></i>{{label}}</a>
+</span>
+{{else if isCurrency}}
+<span class="se-item se-currency"><i class="fas fa-coins"></i> {{label}}</span>
+{{else}}
+<span class="se-item se-missing"><i class="fas fa-triangle-exclamation"></i> {{label}}</span>
+{{/if}}
