@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 (2026-11-17)
+### Changed
+- The module title is now "D&D 5e Starting Equipment".
+
 ## 1.0.0 (2026-11-13)
 ### Added
 - When a class or background is added to a level 1 character, a dialog offers its starting equipment and starting wealth.
