@@ -1,7 +1,25 @@
+/* ------------------------------------------------------------------ */
+/*  D&D 5e Starting Equipment — styled to match the dnd5e system UI    */
+/*  (the app carries the system's `dnd5e2` class for window chrome)    */
+/* ------------------------------------------------------------------ */
+
+.dnd5e-starting-equipment {
+  --se-gold: var(--dnd5e-color-gold, #9f9275);
+  --se-border: var(--dnd5e-border-gold, 1px solid #9f9275);
+  --se-accent: var(--dnd5e-color-maroon, #741b2b);
+  --se-card: var(--dnd5e-background-card, #f8f4f1);
+  --se-tint: var(--dnd5e-background-5, rgb(0 0 0 / 0.05));
+  --se-shadow: var(--dnd5e-shadow-15, rgb(0 0 0 / 0.15));
+  --se-font-title: var(--dnd5e-font-modesto, "Modesto Condensed", "Palatino Linotype", serif);
+  --se-font-label: var(--dnd5e-font-roboto-condensed, "Roboto Condensed", sans-serif);
+  --se-font-body: var(--dnd5e-font-roboto, "Roboto", sans-serif);
+  font-family: var(--se-font-body);
+}
+
 .dnd5e-starting-equipment .se-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .dnd5e-starting-equipment .se-body {
@@ -10,50 +28,90 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding-right: 0.25rem;
+  padding: 0.125rem 0.25rem 0.125rem 0.125rem;
 }
 
+/* Source card (one per class / background) */
 .dnd5e-starting-equipment .se-source {
-  border: 1px solid var(--color-border-light-tertiary, #8884);
+  background: var(--se-card);
+  border: var(--se-border);
   border-radius: 6px;
-  padding: 0.5rem 0.75rem;
+  box-shadow: 0 0 6px var(--se-shadow);
+  overflow: hidden;
 }
 
 .dnd5e-starting-equipment .se-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.4rem;
+  gap: 0.6rem;
+  padding: 0.45rem 0.75rem;
+  border-bottom: var(--se-border);
+  background: var(--se-tint);
 }
 .dnd5e-starting-equipment .se-header img {
-  width: 36px;
-  height: 36px;
-  border: none;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border: var(--se-border);
   border-radius: 4px;
+  object-fit: cover;
 }
 .dnd5e-starting-equipment .se-header h3 {
   margin: 0;
   border: none;
+  font-family: var(--se-font-title);
+  font-size: var(--font-size-20, 20px);
+  font-weight: bold;
+  line-height: 1.1;
+  color: var(--se-accent);
 }
 .dnd5e-starting-equipment .se-type {
-  font-size: var(--font-size-12, 12px);
+  font-family: var(--se-font-label);
+  font-size: var(--font-size-11, 11px);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   opacity: 0.75;
+}
+
+.dnd5e-starting-equipment .se-equipment,
+.dnd5e-starting-equipment .se-source > .hint {
+  padding: 0.5rem 0.75rem 0.65rem;
+}
+.dnd5e-starting-equipment .se-source > .hint {
+  margin: 0;
 }
 
 /* Equipment vs. gold toggle */
 .dnd5e-starting-equipment .se-mode {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.25rem 1rem;
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px dashed var(--color-border-light-tertiary, #8884);
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px dotted var(--se-gold);
+  font-family: var(--se-font-label);
 }
-.dnd5e-starting-equipment .se-mode label {
+.dnd5e-starting-equipment .se-mode-option {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  margin: 0;
+  white-space: nowrap;
+}
+.dnd5e-starting-equipment .se-mode-option input {
+  margin: 0 0.15rem 0 0;
+}
+.dnd5e-starting-equipment .se-mode-gold {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 28px;
+}
+.dnd5e-starting-equipment .se-mode code {
+  font-family: var(--se-font-label);
+  font-weight: bold;
+  background: none;
+  border: none;
+  color: var(--se-accent);
 }
 .dnd5e-starting-equipment .se-gold-row {
   display: flex;
@@ -61,14 +119,39 @@
   gap: 0.25rem;
   margin-left: auto;
 }
-.dnd5e-starting-equipment .se-gold-row input {
-  width: 5rem;
+.dnd5e-starting-equipment .se-gold-row input.se-gold {
+  width: 4.5rem;
+  height: 26px;
+  flex: 0 0 auto;
   text-align: right;
 }
-.dnd5e-starting-equipment .se-gold-row button {
-  flex: 0 0 auto;
-  width: auto;
-  padding: 0 0.5rem;
+.dnd5e-starting-equipment .se-gold-row .se-gp {
+  font-weight: bold;
+  color: var(--se-gold);
+}
+.dnd5e-starting-equipment .se-gold-row button.se-roll {
+  flex: 0 0 26px;
+  width: 26px;
+  height: 26px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--se-border);
+  border-radius: 4px;
+  color: var(--se-accent);
+}
+.dnd5e-starting-equipment .se-gold-row button.se-roll i {
+  margin: 0;
+  font-size: var(--font-size-14, 14px);
+}
+.dnd5e-starting-equipment .se-gold-row.inactive {
+  opacity: 0.4;
+}
+.dnd5e-starting-equipment .se-gold-row.inactive:hover {
+  opacity: 0.75;
 }
 
 /* Tree */
@@ -78,32 +161,41 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.35rem;
 }
 .dnd5e-starting-equipment .se-and .se-and {
   padding-left: 0.25rem;
 }
 
+/* "Choose one" groups */
 .dnd5e-starting-equipment .se-or {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  padding: 0.25rem 0.5rem;
-  border-left: 3px solid var(--color-warm-2, #c9593f);
-  background: rgb(0 0 0 / 0.04);
+  gap: 0.25rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--se-gold);
+  border-left: 3px solid var(--se-accent);
   border-radius: 0 4px 4px 0;
+  background: var(--se-tint);
 }
 .dnd5e-starting-equipment .se-or-label {
+  font-family: var(--se-font-label);
   font-size: var(--font-size-11, 11px);
+  font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  opacity: 0.7;
+  letter-spacing: 0.08em;
+  color: var(--se-accent);
 }
 
 .dnd5e-starting-equipment .se-choice {
   display: flex;
   align-items: flex-start;
   gap: 0.35rem;
+  transition: opacity 120ms ease;
+}
+.dnd5e-starting-equipment .se-choice + .se-choice {
+  padding-top: 0.25rem;
+  border-top: 1px dotted var(--se-gold);
 }
 .dnd5e-starting-equipment .se-choice-head {
   display: flex;
@@ -118,8 +210,10 @@
   padding-top: 2px;
 }
 .dnd5e-starting-equipment .se-letter {
+  font-family: var(--se-font-title);
+  font-size: var(--font-size-16, 16px);
   font-weight: bold;
-  opacity: 0.8;
+  color: var(--se-accent);
 }
 
 .dnd5e-starting-equipment .se-select {
@@ -133,6 +227,7 @@
   min-width: 10rem;
 }
 .dnd5e-starting-equipment .se-hint {
+  font-family: var(--se-font-label);
   font-size: var(--font-size-12, 12px);
   font-style: italic;
   opacity: 0.75;
@@ -144,10 +239,15 @@
   gap: 0.25rem;
 }
 .dnd5e-starting-equipment .se-count {
+  font-family: var(--se-font-label);
   font-weight: bold;
+  color: var(--se-accent);
+}
+.dnd5e-starting-equipment .se-currency i {
+  color: var(--se-gold);
 }
 .dnd5e-starting-equipment .se-missing {
-  color: var(--color-level-error, #c33);
+  color: var(--dnd5e-color-failure, #c33);
 }
 
 .dnd5e-starting-equipment .inactive {

@@ -12,20 +12,22 @@
 
       {{#if hasWealth}}
       <div class="se-mode">
-        <label>
+        <label class="se-mode-option">
           <input type="radio" name="mode-{{id}}" value="equipment" data-mode="{{id}}" {{#if root}}checked{{/if}} {{#unless root}}disabled{{/unless}}>
           {{localize "STARTEQUIP.TakeEquipment"}}
         </label>
-        <label>
-          <input type="radio" name="mode-{{id}}" value="gold" data-mode="{{id}}" {{#unless root}}checked{{/unless}}>
-          {{localize "STARTEQUIP.TakeGold"}} <code>{{wealth}}</code>
-        </label>
-        <div class="se-gold-row">
-          <input type="number" class="se-gold" name="gold-{{id}}" min="0" step="1" value="" placeholder="—">
-          <span>gp</span>
-          <button type="button" data-action="rollGold" data-source="{{id}}" data-tooltip="STARTEQUIP.Roll">
-            <i class="fas fa-dice-d20"></i>
-          </button>
+        <div class="se-mode-gold">
+          <label class="se-mode-option">
+            <input type="radio" name="mode-{{id}}" value="gold" data-mode="{{id}}" {{#unless root}}checked{{/unless}}>
+            {{localize "STARTEQUIP.TakeGold"}} <code>{{wealth}}</code>
+          </label>
+          <div class="se-gold-row">
+            <input type="number" class="se-gold" name="gold-{{id}}" min="0" step="1" value="" placeholder="—">
+            <span class="se-gp">gp</span>
+            <button type="button" class="se-roll" data-action="rollGold" data-source="{{id}}" data-tooltip="STARTEQUIP.Roll">
+              <i class="fas fa-dice-d20"></i>
+            </button>
+          </div>
         </div>
       </div>
       {{/if}}

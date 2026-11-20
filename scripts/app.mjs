@@ -19,7 +19,7 @@ export class StartingEquipmentApp extends HandlebarsApplicationMixin(Application
   }
 
   static DEFAULT_OPTIONS = {
-    classes: ["dnd5e-starting-equipment"],
+    classes: ["dnd5e2", "dnd5e-starting-equipment"],
     tag: "form",
     window: { icon: "fas fa-sack", resizable: true },
     position: { width: 540, height: "auto" },
