@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2 (2026-11-19)
+### Changed
+- The dialog now matches the dnd5e system's look: its window style, gold-bordered cards for each class or background, and the system's fonts.
+- The starting-gold amount and roll button now sit on the same line as "Take starting gold instead".
+
 ## 1.0.1 (2026-11-17)
 ### Changed
 - The module title is now "D&D 5e Starting Equipment".
